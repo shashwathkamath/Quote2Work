@@ -60,14 +60,14 @@ const SignUpScreen: React.FC = () => {
                     <Picker.Item label="Individual" value="individual" />
                     {/* <Picker.Item label="Company" value="company" /> */}
                 </Picker>
-                {/* {userType === 'company' && (
+                {userType === 'company' && (
                     <TextInput
                         style={styles.input}
                         placeholder="Company Name"
                         onChangeText={setCompanyName}
                         value={companyName}
                     />
-                )} */}
+                )}
             </View>
             <Button title="Sign Up" onPress={handleSignUp} />
         </View>
