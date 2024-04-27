@@ -10,6 +10,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
+import MyTabs from './screens/TabScreen';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
@@ -19,6 +20,7 @@ function App(): React.JSX.Element {
       <Stack.Navigator initialRouteName="SignUp">
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Tabs" component={MyTabs} />
       </Stack.Navigator>
     </NavigationContainer>
 
