@@ -1,8 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 import { RadioButtonProps, RadioGroup } from 'react-native-radio-buttons-group';
 
-const SignUpScreen: React.FC = () => {
+
+const SignUpScreen: React.FC = (props: any) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
@@ -25,7 +26,11 @@ const SignUpScreen: React.FC = () => {
         ],
         []
     );
+    useEffect(() => {
+        console.log(props)
+    });
 
+    const { navigation } = props;
 
     const handleSignUp = () => {
         // Perform sign-up logic here
@@ -37,6 +42,7 @@ const SignUpScreen: React.FC = () => {
         if (userType === 'company') {
             console.log('Company Name:', companyName);
         }
+        navigation.navigate('Login');
         // You can send the data to your backend or perform any other actions here
     };
 
@@ -82,7 +88,7 @@ const SignUpScreen: React.FC = () => {
                 onChangeText={setCompanyName}
                 value={username}
             />}
-            <Button title="Sign Up" onPress={handleSignUp} />
+            <Button title="Sign Up" onPress={() => handleSignUp()} />
         </View>
     );
 };
