@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 
 
-const LoginScreen: React.FC = () => {
+const LoginScreen: React.FC = (props: any) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
-
+    const { navigation } = props;
 
     const handleLogin = () => {
         // Perform login logic here
         console.log('Username:', username);
         console.log('Password:', password);
-
+        navigation.navigate("Tabs");
         // You can send the login data to your backend or perform any other actions here
     };
 
