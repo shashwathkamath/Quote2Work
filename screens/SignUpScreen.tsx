@@ -1,6 +1,6 @@
-import { Picker } from '@react-native-picker/picker';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
+import { RadioButtonProps, RadioGroup } from 'react-native-radio-buttons-group';
 
 const SignUpScreen: React.FC = () => {
     const [name, setName] = useState('');
@@ -9,6 +9,23 @@ const SignUpScreen: React.FC = () => {
     const [userType, setUserType] = useState<'individual' | 'company'>('individual');
     const [username, setUsername] = useState('');
     const [companyName, setCompanyName] = useState('');
+    const [selectedId, setSelectedId] = useState<string | undefined>();
+    const radioButtons: RadioButtonProps[] = useMemo(
+        () => [
+            {
+                id: '1', // acts as primary key, should be unique and non-empty string
+                label: 'individual',
+                value: 'Individual'
+            },
+            {
+                id: '2',
+                label: 'company',
+                value: 'Company'
+            }
+        ],
+        []
+    );
+
 
     const handleSignUp = () => {
         // Perform sign-up logic here
@@ -52,23 +69,19 @@ const SignUpScreen: React.FC = () => {
                     onChangeText={setUsername}
                     value={username}
                 />
-                <Picker
-                    selectedValue={userType}
-                    onValueChange={(itemValue) => setUserType(itemValue as 'individual' | 'company')}
-                    style={styles.picker}
-                >
-                    <Picker.Item label="Individual" value="individual" />
-                    {/* <Picker.Item label="Company" value="company" /> */}
-                </Picker>
-                {userType === 'company' && (
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Company Name"
-                        onChangeText={setCompanyName}
-                        value={companyName}
-                    />
-                )}
             </View>
+            <RadioGroup
+                radioButtons={radioButtons}
+                onPress={setSelectedId}
+                selectedId={selectedId}
+                layout='row'
+            />
+            {selectedId == '2' && <TextInput
+                style={styles.input}
+                placeholder="Company name"
+                onChangeText={setCompanyName}
+                value={username}
+            />}
             <Button title="Sign Up" onPress={handleSignUp} />
         </View>
     );
@@ -92,10 +105,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         paddingHorizontal: 10,
     },
-    picker: {
-        backgroundColor: 'black',
+    buttonContainer: {
         width: '100%',
-        height: 40,
         marginBottom: 10,
         paddingHorizontal: 10,
     },
