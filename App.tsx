@@ -11,7 +11,6 @@ import { StyleSheet } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import MyTabs from './screens/TabScreen';
-import CustomHeader from './screens/components/CustomHeader';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
@@ -19,11 +18,12 @@ function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SignUp">
-        <Stack.Screen name="SignUp" component={SignUpScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} options={{ title: 'Sign Up' }} />
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
         <Stack.Screen name="Tabs" component={MyTabs}
           options={{
-            header: () => <CustomHeader />
+            headerBackTitleVisible: true,
+            title: 'Quote2Work'
           }}
         />
       </Stack.Navigator>
