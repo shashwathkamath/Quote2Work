@@ -11,6 +11,7 @@ import { StyleSheet } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import MyTabs from './screens/TabScreen';
+import CustomHeader from './screens/components/CustomHeader';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator();
@@ -22,8 +23,9 @@ function App(): React.JSX.Element {
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
         <Stack.Screen name="Tabs" component={MyTabs}
           options={{
-            headerBackTitleVisible: true,
-            title: 'Quote2Work'
+            header: () => <CustomHeader />,
+            headerBackTitleVisible: false,
+            title: 'Quote2Work',
           }}
         />
       </Stack.Navigator>
