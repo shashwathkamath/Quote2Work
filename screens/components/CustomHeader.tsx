@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const CustomHeader = (props: any) => {
-    useEffect(() => {
-        console.log("Inside header");
-    });
+    const { navigation } = props;
+    const handleProfilePress = () => {
+        // Navigate to the profile screen
+        navigation.navigate('Profile');
+    };
+    const profileImage = require('./profile.png');
+
     return (
         <SafeAreaView>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <TouchableOpacity onPress={props.onProfilePress}>
-                        <Text style={styles.profileButton}>Profile</Text>
+                    <TouchableOpacity onPress={handleProfilePress} style={styles.profileButton}>
+                        <Image source={profileImage} style={styles.profileImage} />
                     </TouchableOpacity>
                     <Text style={styles.title}>Quote2Work</Text>
                     <TouchableOpacity onPress={props.onBackPress}>
@@ -25,14 +29,13 @@ const CustomHeader = (props: any) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        backgroundColor: 'blue',
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 16,
-        paddingVertical: 8,
     },
     title: {
         fontSize: 18,
@@ -44,8 +47,12 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     profileButton: {
-        fontSize: 16,
-        color: 'black',
+        borderRadius: 25, // Make it round
+        overflow: 'hidden', // Ensure image stays within bounds
+    },
+    profileImage: {
+        width: 50,
+        height: 50,
     },
 });
 
