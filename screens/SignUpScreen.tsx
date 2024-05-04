@@ -42,7 +42,7 @@ const SignUpScreen: React.FC = (props: any) => {
         if (userType === 'company') {
             console.log('Company Name:', companyName);
         }
-        navigation.navigate('Login');
+        navigation.replace('Login');
         // You can send the data to your backend or perform any other actions here
     };
 

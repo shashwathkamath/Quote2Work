@@ -11,7 +11,7 @@ const LoginScreen: React.FC = (props: any) => {
         // Perform login logic here
         console.log('Username:', username);
         console.log('Password:', password);
-        navigation.navigate("Tabs");
+        navigation.replace("Tabs");
         // You can send the login data to your backend or perform any other actions here
     };
 
