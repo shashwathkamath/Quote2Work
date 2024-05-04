@@ -6,7 +6,7 @@ const CustomHeader = (props: any) => {
     const { navigation } = props;
     const handleProfilePress = () => {
         // Navigate to the profile screen
-        navigation.navigate('Profile');
+        navigation.navigate("Profile");
     };
     const profileImage = require('./profile.png');
 
