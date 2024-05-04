@@ -23,11 +23,11 @@ function App(): React.JSX.Element {
         <Stack.Screen name="SignUp" component={SignUpScreen} options={{ title: 'Sign Up' }} />
         <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
         <Stack.Screen name="Tabs" component={MyTabs}
-          options={{
-            header: () => <CustomHeader />,
+          options={({ navigation }) => ({
+            header: () => <CustomHeader navigation={navigation} />, // Pass navigation prop here
             headerBackTitleVisible: false,
             title: 'Quote2Work',
-          }}
+          })}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
