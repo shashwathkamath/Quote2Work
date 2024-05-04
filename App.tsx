@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import LoginScreen from './screens/LoginScreen';
+import ProfileScreen from './screens/ProfileScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import MyTabs from './screens/TabScreen';
 import CustomHeader from './screens/components/CustomHeader';
@@ -28,6 +29,7 @@ function App(): React.JSX.Element {
             title: 'Quote2Work',
           }}
         />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
 
